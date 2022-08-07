@@ -10,40 +10,14 @@
 
 {{ rooms.aroom==0 ?? 'No Room' }}
 
+
 <div *ngIf="rooms.aroom>0">
-    Room List
-    <!-- {{roomlist}} -->
-    <table>
-        <tr>
-            <th>Index</th>
-            <th>Even/Odd</th>
-            <th>Room No</th>
-            <th>Room Type</th>
-            <th>Amenities</th>
-            <th>Price</th>
-            <th>Photo</th>
-            <th>Check In</th>
-            <th>Check Out</th>
-            <th>Rating</th>
-        </tr>
-        <tr [ngClass]="e ? 'even':'odd'" *ngFor="let room of roomlist |slice:0:3; let e=even;let o=odd;let i=index;">
-            <td>{{i}}</td>
-            <td>{{e?"Odd":"Even"}}</td>
-            <td>{{room.roomNo}}</td>
-            <td>{{room.roomType}}</td>
-            <td>{{room.amenities | titlecase}}</td>
-            <td>{{room.price | currency}}</td>
-            <td>
-                <!-- {{room.photo}} -->
-
-            </td>
-            <td>{{room.checkinTime}}</td>
-            <td>{{room.checkoutTime | date:"dd-MMM-yyyy"}}</td>
-            <td>{{room.rating |number:'1.1-2'}}</td>
-        </tr>
-
-    </table>
+    <app-room-list [rooms]="roomlist" (selectedRoom)="onGetSelectedRoom($event)"></app-room-list>
 </div>
 
+<div *ngIf="selectedRoom">
+    Selected Room:
+    {{selectedRoom | json}}
+</div>
 
 <button (click)="toggle()">Toogle</button>
