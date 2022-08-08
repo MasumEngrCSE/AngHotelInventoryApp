@@ -10,9 +10,12 @@
 
 {{ rooms.aroom==0 ?? 'No Room' }}
 
-
+<div>
+    <button (click)="addRoom()">Add Room</button>
+</div>
 <div *ngIf="rooms.aroom>0">
-    <app-room-list [rooms]="roomlist" (selectedRoom)="onGetSelectedRoom($event)"></app-room-list>
+    <app-room-list [rooms]="roomlist" [ptitle]="ptitle"
+    (selectedRoom)="onGetSelectedRoom($event)"></app-room-list>
 </div>
 
 <div *ngIf="selectedRoom">

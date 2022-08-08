@@ -9,6 +9,7 @@ import { IRoom, IRoomList } from './irooms';
 export class RoomsComponent implements OnInit {
 
   hotelName = "Ang Hotel";
+  ptitle='List';
   nfRoom = 10;
   hideRoome = false;
   rooms: IRoom = {
@@ -64,9 +65,27 @@ export class RoomsComponent implements OnInit {
     this.selectedRoom = room;
   }
 
+  addRoom(){
+    const room:IRoomList=
+    {        
+      roomNo: 4,
+      roomType: 'Delux Room',
+      amenities: 'AC Free Wi-Fi',
+      price: 600,
+      photo: 'https://unsplash.com/photos/whWhg0ozm54',
+      checkinTime: new Date('10-Jan-2022'),
+      checkoutTime: new Date('10-Jan-2022'),
+      rating: 4.374
+    };
+
+   //this.roomlist.push(room);
+   this.roomlist=[...this.roomlist,room];
+
+  }
 
   toggle() {
     this.hideRoome = !this.hideRoome;
+    this.ptitle="Rooms List";
   }
 
 }
